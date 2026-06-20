@@ -1,13 +1,13 @@
 ---
 services:
   db:
-    image: shaikmustafa/flm2026:dbimage
+    image: ujjvalpedaprolu/2nd-project:db_image
     ports:
       - "3306:3306"
     deploy:
       replicas: 1
   auth_service:
-    image: shaikmustafa/flm2026:authimage
+    image: ujjvalpedaprolu/2nd-project:auth_image  
     ports:
       - "5001:5001"
     deploy:
@@ -15,7 +15,7 @@ services:
     depends_on:
       - db
   book_service:
-    image: shaikmustafa/flm2026:bookimage
+    image: ujjvalpedaprolu/2nd-project:book_image
     ports:
       - "5002:5002"
     deploy:
@@ -23,15 +23,15 @@ services:
     depends_on:
       - db
   borrow_service:
-    image: shaikmustafa/flm2026:borrowimage
+    image: ujjvalpedaprolu/2nd-project:borrow_image
     ports:
       - "5003:5003"
     deploy:
       replicas: 1
     depends_on:
       - db
-  app_service:
-    image: shaikmustafa/flm2026:appimage
+  frontend_service:
+    image: ujjvalpedaprolu/2nd-project:frontend
     ports:
       - "5000:5000"
     deploy:
@@ -40,3 +40,7 @@ services:
       - auth_service
       - book_service
       - borrow_service
+
+networks:
+  mynetwork:
+    driver: overlay
