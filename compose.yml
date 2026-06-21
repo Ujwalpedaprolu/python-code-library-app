@@ -1,13 +1,13 @@
 ---
 services:
   db:
-    image: ujjvalpedaprolu/new-project:db_image
+    image: ujjvalpedaprolu/dp:db_image
     ports:
       - "3306:3306"
     deploy:
       replicas: 1
   auth_service:
-    image: ujjvalpedaprolu/new-project:auth_image  
+    image: ujjvalpedaprolu/dp:auth_image  
     ports:
       - "5001:5001"
     deploy:
@@ -15,7 +15,7 @@ services:
     depends_on:
       - db
   book_service:
-    image: ujjvalpedaprolu/new-project:book_image
+    image: ujjvalpedaprolu/dp:book_image
     ports:
       - "5002:5002"
     deploy:
@@ -23,7 +23,7 @@ services:
     depends_on:
       - db
   borrow_service:
-    image: ujjvalpedaprolu/new-project:borrow_image
+    image: ujjvalpedaprolu/dp:borrow_image
     ports:
       - "5003:5003"
     deploy:
@@ -31,7 +31,7 @@ services:
     depends_on:
       - db
   frontend_service:
-    image: ujjvalpedaprolu/new-project:frontend
+    image: ujjvalpedaprolu/dp:frontend
     ports:
       - "5000:5000"
     deploy:
